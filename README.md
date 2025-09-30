@@ -93,8 +93,6 @@ pip install -e .
 
 After completing these steps, the VSALip environment is ready for data preprocessing, training, and evaluation.
 
-```
-
 
 
 ### How to prepare the dataset
@@ -106,7 +104,7 @@ This guide explains how to set up the environment for the VSALip proje
 ### How to train
 
 Need to update...
-
+```Shell
 usage: ldw_main.py [-h] [--model MODEL] [--data DATA] [--root_dir ROOT_DIR]
                    [--modality MODALITY] [--weights WEIGHTS]
                    [--aux_weights AUX_WEIGHTS] [--model_name MODEL_NAME]
@@ -128,7 +126,7 @@ usage: ldw_main.py [-h] [--model MODEL] [--data DATA] [--root_dir ROOT_DIR]
                    [--export_name EXPORT_NAME] [--export_layers EXPORT_LAYERS]
                    [--reWeights_name REWEIGHTS_NAME] [--results RESULTS]
                    task mode
-
+```
 
 ### How to test
 
@@ -164,67 +162,6 @@ If you find this code useful in your research, please consider to cite the follo
 need to update...
 ```
 
-
-### How to train
-
-Need to update...
-
-usage: ldw_main.py [-h] [--model MODEL] [--data DATA] [--root_dir ROOT_DIR]
-                   [--modality MODALITY] [--weights WEIGHTS]
-                   [--aux_weights AUX_WEIGHTS] [--model_name MODEL_NAME]
-                   [--run_exp_dir RUN_EXP_DIR] [--max_epochs MAX_EPOCHS]
-                   [--batch BATCH] [--save_every_epoch SAVE_EVERY_EPOCH]
-                   [--save_dir SAVE_DIR] [--device DEVICE]
-                   [--pretrained PRETRAINED] [--freeze FREEZE]
-                   [--optimizer OPTIMIZER] [--lr LR]
-                   [--warmup_epochs WARMUP_EPOCHS]
-                   [--weight_decay WEIGHT_DECAY] [--resume RESUME]
-                   [--workers WORKERS] [--save_per_sample SAVE_PER_SAMPLE]
-                   [--half HALF] [--ctc_weight CTC_WEIGHT]
-                   [--beam_size BEAM_SIZE] [--lm_weight LM_WEIGHT]
-                   [--test_data TEST_DATA]
-                   [--lipauthEval_data LIPAUTHEVAL_DATA] [--ids_user IDS_USER]
-                   [--save_featuresPath SAVE_FEATURESPATH]
-                   [--attack_type ATTACK_TYPE] [--attack_level ATTACK_LEVEL]
-                   [--source SOURCE] [--layer_depth LAYER_DEPTH]
-                   [--export_name EXPORT_NAME] [--export_layers EXPORT_LAYERS]
-                   [--reWeights_name REWEIGHTS_NAME] [--results RESULTS]
-                   task mode
-
-
-
-
-### How to prepare the dataset
-
-This guide explains how to set up the environment for the VSALip proje
-
-
-
-
-
-### How to test
-
-You need to specify *`<ANNONATION-DIRECTORY>`* if you use a model with utilising word boundaries indicators.
-
-1. Evaluate the visual-only performance (lipreading).
-
-```Shell
-CUDA_VISIBLE_DEVICES=0 python main.py --modality video \
-                                      --config-path <MODEL-JSON-PATH> \
-                                      --model-path <MODEL-PATH> \
-                                      --data-dir <MOUTH-ROIS-DIRECTORY> \
-                                      --test
-```
-
-2. Evaluate the audio-only performance.
-
-```Shell
-CUDA_VISIBLE_DEVICES=0 python main.py --modality audio \
-                                      --config-path <MODEL-JSON-PATH> \
-                                      --model-path <MODEL-PATH> \
-                                      --data-dir <AUDIO-WAVEFORMS-DIRECTORY>
-                                      --test
-```
 
 
 ## License
