@@ -10,9 +10,6 @@ Visual Speaker Authentication via Lip Motions: Appearance Consistency and Semant
 - [How to train](#how-to-train)
 - [How to test](#how-to-test)
 
-
-[Model Zoo](#model-zoo)
-
 [Citation](#citation)
 
 [License](#license)
@@ -96,8 +93,7 @@ After completing these steps, the VSALip environment is ready for data preproces
 
 ### How to prepare the dataset
 
-This guide explains how to set up the environment for the VSALip proje
-
+Our project refers to VSR; for dataset preprocessing, please see [auto_avsr](https://github.com/mpc001/auto_avsr).
 
 
 ### How to train
