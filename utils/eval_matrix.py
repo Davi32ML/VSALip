@@ -198,6 +198,7 @@ def cal_lipauth_matrics(all_sim_scores, key_thresholds):
             "TPR@1%": tpr_1
         }
 
-    return opt_thresholds, confusion_metrics, key_metrics, 
+    return opt_thresholds, key_metrics, 
+
 
 
