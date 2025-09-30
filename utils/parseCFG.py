@@ -6,21 +6,21 @@ import os, yaml
 class NestedConfig:
     def __init__(self, **kwargs):
         for key, value in kwargs.items():
-            if isinstance(value, dict):  # 如果值是字典，则递归地创建一个 NestedConfig 实例
+            if isinstance(value, dict):  
                 setattr(self, key, NestedConfig(**value))
-            else:  # 否则，直接设置属性
+            else:  
                 setattr(self, key, value)
 
 
 class Config:
-    def __init__(self, config_dict):  # 递归地处理传入的字典，并设置属性
+    def __init__(self, config_dict):  
         self._set_config(config_dict, self)
 
     def _set_config(self, config_dict, obj):
         for key, value in config_dict.items():
-            if isinstance(value, dict):  # 如果值是字典，则创建一个 NestedConfig 实例并设置为属性
+            if isinstance(value, dict):  
                 setattr(obj, key, NestedConfig(**value))
-            else:  # 否则，直接设置属性
+            else: 
                 setattr(obj, key, value)
 
 
@@ -44,6 +44,7 @@ def parse_cfg(data_cfg, model_cfg):
     config_dict = {"data":data,"model":model,"default":default,"predict":pre_dict,"train":Train,"eval":Eval}
     cfg = Config(config_dict)
     return cfg
+
 
 
 
