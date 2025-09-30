@@ -3,7 +3,7 @@
 Visual Speaker Authentication via Lip Motions: Appearance Consistency and Semantic Disentanglement
 
 ## Content
-[Deep Lipreading](#deep-lipreading)
+[VSALip Project](#VSALip-Project)
 - [Introduction](#introduction)
 - [How to install the environment](#How-to-prepare-the-dataset)
 - [How to prepare the dataset](#how-to-prepare-dataset)
