@@ -170,6 +170,11 @@ Evaluate appearance features:
 python main.py lipauth eval data=icslrAuth.yaml model=icslr/AEncoder_icslr.yaml root_dir=ROOTDIR lipauthEval_data=labels/icslr/icslrAuth_Celeb1_test_20000.ref
 ```
 
+Evaluate motion pattern features:
+```Shell
+python main.py lipauth eval data=icslrAuth.yaml model=icslr/PEncoder_icslr.yaml root_dir=ROOTDIR lipauthEval_data=labels/icslrAuth/icslrAuth_Celeb1_test_20000.ref
+```
+
 
 ## Citation
 
