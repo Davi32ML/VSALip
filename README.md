@@ -164,6 +164,17 @@ If you find this code useful in your research, please consider to cite the follo
 need to update...
 ```
 
+
+
+
+### How to prepare the dataset
+
+This guide explains how to set up the environment for the VSALip proje
+
+
+
+
+
 ### How to test
 
 You need to specify *`<ANNONATION-DIRECTORY>`* if you use a model with utilising word boundaries indicators.
