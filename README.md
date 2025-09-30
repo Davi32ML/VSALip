@@ -151,6 +151,21 @@ python main.py lipauth eval  \
 ```
 
 
+## Performance
+
+If you find this code useful in your research, please consider to cite the following papers:
+
+### Lip-based Authentication(ICSLR/GRID)
+
+FDAM boosts performance on various backbones, including CNN-based, ViT-based, and even recent Mamba-based models.
+
+| Encoder     | EER/% |  TPR@FAR=1% |  TPR@FAR=0.1% |
+| ------------ | -------------- | ---------------- | ----------- |
+| A-Encoder | 0.79           | **39.8**         | **+2.4**    |
+| P-Encoder       | 0.85           | **44.3**         | **+1.4**    |
+
+
+
 
 ## Citation
 
