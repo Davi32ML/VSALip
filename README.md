@@ -29,58 +29,73 @@ Lip-based visual biometric technology shows significant potential for improving 
 
 ### Install
 
+This guide explains how to set up the environment for the LDWLip project, including Python environment, PyTorch framework, required libraries, and face detection/alignment models. Follow the steps sequentially.
+
 1. **Download the project**  
-The project has not been uploaded to GitHub. Please contact the author to obtain `LDWLip.tar.gz (414.40 MB)`.
+   The project has not been uploaded to GitHub. Please contact the author to obtain `LDWLip.tar.gz (414.40 MB)`.
 
 2. **Create and activate Conda environment**
 ```bash
 conda create -y -n LDWLip python=3.9
 conda activate LDWLip
+````
 
+3. **Install PyTorch**
+   CPU version:
 
+```bash
+pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cpu
+```
 
+GPU version (CUDA 11.7):
 
-		安装pytorch框架：
-			conda install pytorch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 pytorch-cuda=11.7 -c pytorch -c nvidia
-		安装库：
-			sentencepiece
-			av
-			six
-			opencv-python
-			scikit-image
-			tqdm
-			Tensorboard
-			TensorboardX
-			Pyyaml
-			Thop
-			Pypinyin
-			matplotlib
-			fairseq
-			tiktoken
-			
-			pip install sentencepiece av six opencv-python scikit-image tqdm thop tensorboard pyyaml tiktoken chardet
-			pip install einops tensorboardX
-			
-			注意：最新版pip与fairseq有冲突，可降低pip版本进行安装。
-				python.exe -m pip install pip==24.0
+```bash
+conda install pytorch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 pytorch-cuda=11.7 -c pytorch -c nvidia
+```
 
-			注意安装mmcv：
-				python -m pip install openmim
-				python -m mim install mmcv-full
-			
-		安装预处理模型（人脸检测与对齐，不影响训练/评估）：
-			参考https://github.com/hhj1897/下分别下载安装face检测对齐工具
-			人脸检测：
-				git clone https://github.com/hhj1897/face_detection.git
-				cd face_detection
-				git lfs pull
-				pip install -e .
-			人脸对齐：
-				git clone https://github.com/hhj1897/face_detection.git
-				cd face_detection
-				git lfs pull
-				pip install -e .
-			注意：git lfs pull可以不执行
+4. **Install required libraries**
+
+```bash
+pip install sentencepiece av six opencv-python scikit-image tqdm thop tensorboard pyyaml tiktoken chardet
+pip install einops tensorboardX
+```
+
+> Note: The latest version of pip may conflict with fairseq. If installation fails, downgrade pip:
+
+```bash
+python -m pip install pip==24.0
+```
+
+5. **Install MMCV**
+
+```bash
+python -m pip install openmim
+python -m mim install mmcv-full
+```
+
+6. **Install preprocessing models (optional, not required for training/evaluation)**
+   Face detection:
+
+```bash
+git clone https://github.com/hhj1897/face_detection.git
+cd face_detection
+git lfs pull  # optional
+pip install -e .
+```
+
+Face alignment:
+
+```bash
+git clone https://github.com/hhj1897/face_detection.git
+cd face_detection
+git lfs pull  # optional
+pip install -e .
+```
+
+After completing these steps, the LDWLip environment is ready for data preprocessing, training, and evaluation.
+
+```
+
 
 
 As described in [our paper](https://arxiv.org/abs/2001.08702), each video sequence from the LRW dataset is processed by 1) doing face detection and face alignment, 2) aligning each frame to a reference mean face shape 3) cropping a fixed 96 × 96 pixels wide ROI from the aligned face image so that the mouth region is always roughly centered on the image crop 4) transform the cropped image to gray level.
