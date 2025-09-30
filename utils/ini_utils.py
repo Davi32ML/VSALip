@@ -13,7 +13,6 @@ def get_filetype(filepath):
 
 
 def mkPath(root_dir, path):
-    # 判断路径是否存在，如果不存在则创建文件夹
     path = path.replace(root_dir, '')
     dirs = path.split('/')
     path = root_dir
@@ -26,8 +25,6 @@ def mkPath(root_dir, path):
 
 
 def get_model_dir_name(path, name):
-    # 如果目录文件已存在，则依序新建+1
-    # E:\Sproject\DaviLip\LDWLip\data\lipauth_support\icslr_FeatureHog\icslr_deepfake1
     if os.path.exists(path + '/' + name):
         i = 2
         isFlag = True
@@ -88,14 +85,12 @@ def ini_cfg_del_auxmodel_old(cfg):
                             break
         for id_ in range(len(aux_ids)):
             i, j = aux_ids[id_]
-            # 重置同一个list下的aux_ids和cross_ids
             for id__ in range(id_, len(aux_ids)):
                 if aux_ids[id__][0] == i and aux_ids[id__][1] > j:
                     aux_ids[id__][1] = aux_ids[id__][1] - 1
             for id__ in range(id_, len(cross_ids)):
                 if cross_ids[id__][0] == i and cross_ids[id__][1] > j:
                     cross_ids[id__][1] = cross_ids[id__][1] - 1
-            # 重置cross_ids的f
             for id_c in cross_ids:
                 dis_del = get_dis_model_list((0, 0), (i, j), model_list_new)
                 dis_cros = get_dis_model_list((0, 0), id_c, model_list_new)
@@ -138,7 +133,6 @@ def ini_cfg_del_auxmodel(cfg):
         cross_ids = []
         model_list = [cfg.model.Input, cfg.model.Encoder, cfg.model.Decoder]  #, model.Loss]
 
-        # 将所有层输入源序号置为正
         layer_num = 0
         for i in range(len(model_list)):
             for j in range(len(model_list[i])):
@@ -157,7 +151,6 @@ def ini_cfg_del_auxmodel(cfg):
 
         model_list_new = copy.deepcopy(model_list)
 
-        # 获取aux列表
         for i in range(len(model_list)):
             module = model_list[i]
             for j in range(len(module)):
@@ -173,11 +166,7 @@ def ini_cfg_del_auxmodel(cfg):
                         if f_ != -1 and f_ != 0:
                             cross_ids.append([i, j])
                             break
-
-        # 遍历aux_ids，并删除
-
         while 1:
-            # 顺序查找aux_层，如果查找不到，跳出循环
             aux_id = [0, 0]
             isflag = False
             for i in range(len(model_list)):
@@ -223,9 +212,6 @@ def ini_cfg_del_auxmodel(cfg):
 
 
 def get_register_subset(test_path):
-    # root_dir + 'data/lipauth_support/icslr_Lipnet/'
-    # labels/icslrAuth/icslrAuth_testAll.csv
-    # labels/icslrAuth/DeepfakeAttack/Lip_deepfake1_test.csv
     csv_name = test_path.split('/')[-1].replace('.csv', '')
     register_subset = csv_name
 
@@ -307,9 +293,6 @@ def ini_cfg(args, cfg):
     if args.resume:
         cfg.train.resume = args.resume
 
-    # if args.multi_scale:
-    #     cfg.train.multi_scale = args.multi_scale
-
     # Eval
     attack = ""
     if args.attack_type and args.attack_level:
@@ -341,16 +324,12 @@ def ini_cfg(args, cfg):
                 cfg.model.Output.output_param.lm_weight = args.lm_weight
 
     # lipauth register
-    # cfg.default.root_dir + '/' + cfg.model.Output.output_param.support
-    # data/lipauth_support/icslr_Lipnet/
     if args.task == 'lipauth':  # and args.mode == 'register':
         for layer in cfg.model.Decoder:
             if layer[3] in ['CTCDecoder', 'ATTDecoder', 'TextDecoder']:
                 is_have_sr = True
                 break
-        # 获取子集名称 icslr_valid, icslr_test, icslr_attack1, icslr_attack2, icslr_attack4
         register_subset = get_register_subset(cfg.data.test)
-        # 获取注册特征层数
         save_layerFeatures = []
         for key, value in vars(cfg.model.Output.output_param).items():
             if 'Auth_feature_' in key:
@@ -375,8 +354,6 @@ def ini_cfg(args, cfg):
     # Predict
     if args.source:
         cfg.predict.source = args.source
-    # else
-    # 其中训练模式根据input层判断数据类型，非训练模式根据任务类型选择
     if args.mode in ["train", "resume"]:
         inputs = []
         for i in range(len(cfg.model.Input)):
@@ -399,7 +376,7 @@ def ini_cfg(args, cfg):
             logging.info("task-modality ERROR!!!!!!")
     else:
         if args.task in ["vsr", "lipauth", "classifier"]:
-            cfg.default.modality = "video"  # ASR蒸馏注意，好像无需在意，根据任务直接选择输入了
+            cfg.default.modality = "video"  
         elif args.task == "asr":
             cfg.default.modality = "audio"
         elif args.task == "avsr":
@@ -428,3 +405,4 @@ def ini_cfg(args, cfg):
         cfg = ini_cfg_model(cfg)
     cfg = ini_cfg_del_auxmodel(cfg)
     return cfg
+
