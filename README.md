@@ -157,12 +157,12 @@ If you find this code useful in your research, please consider to cite the follo
 
 ### Lip-based Authentication(ICSLR/GRID)
 
-FDAM boosts performance on various backbones, including CNN-based, ViT-based, and even recent Mamba-based models.
+The recognition performance of different feature models on ICSLR is as follows：
 
 | Encoder     | EER/% |  TPR@FAR=1% |  TPR@FAR=0.1% |
 | ------------ | -------------- | ---------------- | ----------- |
-| A-Encoder | 0.79           | **39.8**         | **+2.4**    |
-| P-Encoder       | 0.85           | **44.3**         | **+1.4**    |
+| A-Encoder | 0.79           | 99.25         | 95.99    |
+| P-Encoder       | 0.85           | 99.37         | 97.35    |
 
 
 
