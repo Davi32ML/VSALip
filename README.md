@@ -164,7 +164,11 @@ The recognition performance of different feature models on ICSLR is as followsï¼
 | A-Encoder | 0.79           | 99.25         | 95.99    |
 | P-Encoder       | 0.85           | 99.37         | 97.35    |
 
-
+We provide the identity features of ICSLR test data after registration, which can be directly used for evaluation.
+Evaluate appearance features:
+```Shell
+python main.py lipauth eval data=icslrAuth.yaml model=icslr/AEncoder_icslr.yaml root_dir=ROOTDIR lipauthEval_data=labels/icslr/icslrAuth_Celeb1_test_20000.ref
+```
 
 
 ## Citation
