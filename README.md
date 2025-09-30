@@ -129,7 +129,7 @@ usage: ldw_main.py [-h] [--model MODEL] [--data DATA] [--root_dir ROOT_DIR]
 
 ### How to test
 
-You need to specify *`<ANNONATION-DIRECTORY>`* if you use a model with utilising word boundaries indicators.
+You need to process the data first before conducting an evaluation.
 
 1. User personalized feature registration (A-Encoder+P-Encoder).
 The registration of VSA requires you to select the lipauth task, register mode, and then specify the dataset, model, weights and ids_user, for example:
