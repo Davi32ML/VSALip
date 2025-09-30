@@ -132,14 +132,11 @@ def eval_lipAuth(args):
     key_thresholds = {}
     for key, _, threshold in cfg.model.Output.output_param.save_layerFeatures:
         key_thresholds[key] = float(threshold)
-    opt_thresholds, confusion_metrics, key_metrics, Total_confusion_metrics, Total_metrics = cal_lipauth_matrics(all_sim_scores, key_thresholds)
+    opt_thresholds, key_metrics = cal_lipauth_matrics(all_sim_scores, key_thresholds)
     with open(outfile, 'a', encoding="utf-8") as f:
         f.write("\n\n\nopt_thresholds: " + str(opt_thresholds))
-        f.write("\nconfusion_metrics: " + str(confusion_metrics))
         f.write("\nkey_metrics: " + str(key_metrics))
         f.write("\n\nkey_thresholds: " + str(key_thresholds))
-        f.write("\nTotal_confusion_metrics: " + str(Total_confusion_metrics))
-        f.write("\nTotal_metrics: " + str(Total_metrics))
         f.write("\n")
 
 
