@@ -131,24 +131,25 @@ usage: ldw_main.py [-h] [--model MODEL] [--data DATA] [--root_dir ROOT_DIR]
 
 You need to specify *`<ANNONATION-DIRECTORY>`* if you use a model with utilising word boundaries indicators.
 
-1. Evaluate the visual-only performance (lipreading).
-
+1. User personalized feature registration (A-Encoder+P-Encoder).
+The registration of VSA requires you to select the lipauth task, register mode, and then specify the dataset, model, weights and ids_user, for example:
 ```Shell
-CUDA_VISIBLE_DEVICES=0 python main.py --modality video \
-                                      --config-path <MODEL-JSON-PATH> \
-                                      --model-path <MODEL-PATH> \
-                                      --data-dir <MOUTH-ROIS-DIRECTORY> \
-                                      --test
+python main.py lipauth register \
+               data=icslrAuth.yaml \
+               model=icslr/A_Encoder_icslr.yaml \
+               root_dir=ROOTDIR \
+               weights=run_exp/A_Encoder_icslr/model.pth ^
+               ids_user=[3,5,19,20]
 ```
 
-2. Evaluate the audio-only performance.
-
+2. Evaluate the VSA performance.
+The evaluation of VSA requires you to select the lipauth task, eval mode, and then specify the dataset, model, and test sample pairs, for example:
 ```Shell
-CUDA_VISIBLE_DEVICES=0 python main.py --modality audio \
-                                      --config-path <MODEL-JSON-PATH> \
-                                      --model-path <MODEL-PATH> \
-                                      --data-dir <AUDIO-WAVEFORMS-DIRECTORY>
-                                      --test
+python main.py lipauth eval  \
+               data=icslrAuth.yaml  \
+               model=Pro_001_Displays/icslr/A_Encoder_icslr.yaml  \
+               root_dir=ROOTDIR  \
+               lipauthEval_data=labels/icslrAuth/icslrAuth_Celeb1_test_20000.ref
 ```
 
 
