@@ -153,7 +153,7 @@ python main.py lipauth eval  \
 
 ## Performance
 
-If you find this code useful in your research, please consider to cite the following papers:
+
 
 ### Lip-based Authentication(ICSLR/GRID)
 
