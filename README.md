@@ -2,6 +2,8 @@
 
 Visual Speaker Authentication via Lip Motions: Appearance Consistency and Semantic Disentanglement
 
+Need to update...
+
 ## Content
 [VSALip Project](#VSALip-Project)
 - [Introduction](#introduction)
