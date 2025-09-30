@@ -6,7 +6,7 @@ Visual Speaker Authentication via Lip Motions: Appearance Consistency and Semant
 [Deep Lipreading](#deep-lipreading)
 - [Introduction](#introduction)
 - [Preprocessing](#preprocessing)
-- [How to install the environment](#How to prepare the dataset)
+- [How to install the environment](#How-to-prepare-the-dataset)
 - [How to prepare the dataset](#how-to-prepare-dataset)
 - [How to train](#how-to-train)
 - [How to test](#how-to-test)
