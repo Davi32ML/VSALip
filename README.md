@@ -164,6 +164,31 @@ If you find this code useful in your research, please consider to cite the follo
 need to update...
 ```
 
+### How to test
+
+You need to specify *`<ANNONATION-DIRECTORY>`* if you use a model with utilising word boundaries indicators.
+
+1. Evaluate the visual-only performance (lipreading).
+
+```Shell
+CUDA_VISIBLE_DEVICES=0 python main.py --modality video \
+                                      --config-path <MODEL-JSON-PATH> \
+                                      --model-path <MODEL-PATH> \
+                                      --data-dir <MOUTH-ROIS-DIRECTORY> \
+                                      --test
+```
+
+2. Evaluate the audio-only performance.
+
+```Shell
+CUDA_VISIBLE_DEVICES=0 python main.py --modality audio \
+                                      --config-path <MODEL-JSON-PATH> \
+                                      --model-path <MODEL-PATH> \
+                                      --data-dir <AUDIO-WAVEFORMS-DIRECTORY>
+                                      --test
+```
+
+
 ## License
 
 It is noted that the code can only be used for comparative or benchmarking purposes. Users can only use code supplied under a [License](./LICENSE) for non-commercial purposes.
