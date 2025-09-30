@@ -96,8 +96,10 @@ After completing these steps, the VSALip environment is ready for data preproces
 ```
 
 
+
 ### How to prepare the dataset
 
+This guide explains how to set up the environment for the VSALip proje
 
 
 
