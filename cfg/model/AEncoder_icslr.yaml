@@ -1,7 +1,5 @@
-# LDW lipreading license
-# LDW lipreading model. For Usage examples see https://github/???
+# lipreading model. For Usage examples see https://github/???
 # [from, repeats, type, module, args]   # type: unit, block, module, network
-# EER=0.0642
 
 Input:
   - [-1, 1, input, Input_video, []]
@@ -10,7 +8,6 @@ Encoder:
   - [0, 1, encoder, Conv3Dfrontend, [24, 5, 7, 'prelu']]
   - [-1, 1, encoder, tensor3Dto2D, []]
   - [-1, 1, encoder, ShuffleNetV2lrw, [96,0.5,'FDConv']]
-#  - [-1, 1, encoder, ShuffleNetV2, [0.5,24,'FDConv']]
   - [-1, 1, unit, ViewtoBatch, []]
   - [-1, 1, encoder, AvgPool1d, [1]]
 Decoder:
@@ -25,5 +22,6 @@ Output:
   output_param:
     save_layerFeatures: 0
     Auth_feature_6: 6,cos,0.91
-    support: data/lipauth_support/StaticD_NShuffleNetV2FDConv_icslr/
-    ids_user: [1,2,13,15] # [3,5,19,20]
+    support: data/lipauth_support/AEncoder_icslr/
+    ids_user: [3,5,19,20]
+
