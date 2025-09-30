@@ -10,7 +10,7 @@ Visual Speaker Authentication via Lip Motions: Appearance Consistency and Semant
 - [How to prepare the dataset](#how-to-prepare-dataset)
 - [How to train](#how-to-train)
 - [How to test](#how-to-test)
-- [How to extract embeddings](#how-to-extract-embeddings)
+
 
 [Model Zoo](#model-zoo)
 
@@ -29,15 +29,15 @@ Lip-based visual biometric technology shows significant potential for improving 
 
 ### How to install the environment
 
-This guide explains how to set up the environment for the LDWLip project, including Python environment, PyTorch framework, required libraries, and face detection/alignment models. Follow the steps sequentially.
+This guide explains how to set up the environment for the VSALip project, including Python environment, PyTorch framework, required libraries, and face detection/alignment models. Follow the steps sequentially.
 
 1. **Download the project**  
-   The project has not been uploaded to GitHub. Please contact the author to obtain `LDWLip.tar.gz (414.40 MB)`.
+   The project has not been uploaded to GitHub. Please contact the author to obtain `VSALip.tar.gz (414.40 MB)`.
 
 2. **Create and activate Conda environment**
 ```bash
-conda create -y -n LDWLip python=3.9
-conda activate LDWLip
+conda create -y -n VSALip python=3.9
+conda activate VSALip
 ````
 
 3. **Install PyTorch**
@@ -92,7 +92,7 @@ git lfs pull  # optional
 pip install -e .
 ```
 
-After completing these steps, the LDWLip environment is ready for data preprocessing, training, and evaluation.
+After completing these steps, the VSALip environment is ready for data preprocessing, training, and evaluation.
 
 ```
 
@@ -104,29 +104,29 @@ After completing these steps, the LDWLip environment is ready for data preproces
 
 ### How to train
 
-1. Train a visual-only model.
+Need to update...
 
-```Shell
-CUDA_VISIBLE_DEVICES=0 python main.py --modality video \
-                                      --config-path <MODEL-JSON-PATH> \
-                                      --annonation-direc <ANNONATION-DIRECTORY> \
-                                      --data-dir <MOUTH-ROIS-DIRECTORY>
-```
-
-2. Train an audio-only model.
-
-```Shell
-CUDA_VISIBLE_DEVICES=0 python main.py --modality audio \
-                                      --config-path <MODEL-JSON-PATH> \
-                                      --annonation-direc <ANNONATION-DIRECTORY> \
-                                      --data-dir <AUDIO-WAVEFORMS-DIRECTORY>
-```
-
-We call the original LRW directory that includes timestamps (.txt) as *`<ANNONATION-DIRECTORY>`*.
-
-3. Resume from last checkpoint.
-
-You can pass the checkpoint path (`.pth` or `.pth.tar`) *`<CHECKPOINT-PATH>`* to the variable argument *`--model-path`*, and specify the *`--init-epoch`* to 1 to resume training.
+usage: ldw_main.py [-h] [--model MODEL] [--data DATA] [--root_dir ROOT_DIR]
+                   [--modality MODALITY] [--weights WEIGHTS]
+                   [--aux_weights AUX_WEIGHTS] [--model_name MODEL_NAME]
+                   [--run_exp_dir RUN_EXP_DIR] [--max_epochs MAX_EPOCHS]
+                   [--batch BATCH] [--save_every_epoch SAVE_EVERY_EPOCH]
+                   [--save_dir SAVE_DIR] [--device DEVICE]
+                   [--pretrained PRETRAINED] [--freeze FREEZE]
+                   [--optimizer OPTIMIZER] [--lr LR]
+                   [--warmup_epochs WARMUP_EPOCHS]
+                   [--weight_decay WEIGHT_DECAY] [--resume RESUME]
+                   [--workers WORKERS] [--save_per_sample SAVE_PER_SAMPLE]
+                   [--half HALF] [--ctc_weight CTC_WEIGHT]
+                   [--beam_size BEAM_SIZE] [--lm_weight LM_WEIGHT]
+                   [--test_data TEST_DATA]
+                   [--lipauthEval_data LIPAUTHEVAL_DATA] [--ids_user IDS_USER]
+                   [--save_featuresPath SAVE_FEATURESPATH]
+                   [--attack_type ATTACK_TYPE] [--attack_level ATTACK_LEVEL]
+                   [--source SOURCE] [--layer_depth LAYER_DEPTH]
+                   [--export_name EXPORT_NAME] [--export_layers EXPORT_LAYERS]
+                   [--reWeights_name REWEIGHTS_NAME] [--results RESULTS]
+                   task mode
 
 
 ### How to test
