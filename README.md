@@ -7,7 +7,7 @@ Need to update...
 ## Content
 [VSALip Project](#VSALip-Project)
 - [Introduction](#introduction)
-- [How to install the environment](#How-to-prepare-the-dataset)
+- [How to install the environment](#How-to-install-the-environment)
 - [How to prepare the dataset](#how-to-prepare-dataset)
 - [How to train](#how-to-train)
 - [How to test](#how-to-test)
