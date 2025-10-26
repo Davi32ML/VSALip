@@ -1,0 +1,27 @@
+
+Input:
+  - [-1, 1, input, Input_video, []] #
+  - [-1, 1, aux_input, Input_label, [1]]  # 1
+Encoder:
+  - [0, 1, encoder, X3DNet_M, [ ] ]  # 2   B C
+  #
+  - [0, 1, aux_encoder, Conv3D_2DNet, ['ResNet18']]
+  - [-1, 1, aux_encoder, embed, [256, 0.1, "rel_mha"]]
+  - [-1, 12, aux_encoder, ConformerLayer, [256, 4, 2048, 0.1, "rel_mha"]]
+  - [-1, 1, aux_encoder, LayerNorm, [256]]  # BTC
+  - [-1, 1, aux_encoder, AvgPool1d, [1]]
+Decoder:
+  - [[2, -1], 1, decoder, GramMatrix_co, [1]]
+  - [2, 1, decoder, nnLinear, [256, 1024]]
+  - [-1, 1, decoder, nnLinear, [1024, 28]]
+Loss:
+  - [-3, 1, loss,LossRelation, ['identity', 'mse']]
+  - [[-2, 1], 1, loss, nnCrossEntropy, []]
+  - [[-1, -2], 1, loss_total, loss_total, [0.9, 0.1]]
+Output:
+  name: LipAuthOutput
+  output_param:
+    save_layerFeatures: 0
+    Auth_feature_2: 2,cos,0.91
+    support: data/lipauth_support/PEncoder/
+    ids_user: [1,2,13,15] # [3,5,19,20]
