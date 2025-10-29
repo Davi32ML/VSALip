@@ -102,7 +102,7 @@ Our project refers to VSR; for dataset preprocessing, please see [auto_avsr](htt
 
 Need to update...
 ```Shell
-usage: ldw_main.py [-h] [--model MODEL] [--data DATA] [--root_dir ROOT_DIR]
+usage: main.py [-h] [--model MODEL] [--data DATA] [--root_dir ROOT_DIR]
                    [--modality MODALITY] [--weights WEIGHTS]
                    [--aux_weights AUX_WEIGHTS] [--model_name MODEL_NAME]
                    [--run_exp_dir RUN_EXP_DIR] [--max_epochs MAX_EPOCHS]
